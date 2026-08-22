@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mublas — music log</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="page-header">
+      <h1>mublas</h1>
+      <p class="subtitle">a personal album listening log</p>
+    </header>
+
+    <section class="stats" id="stats" aria-label="summary stats">
+      <div class="stat-tile">
+        <div class="stat-value" id="stat-total">–</div>
+        <div class="stat-label">albums logged</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-value" id="stat-avg">–</div>
+        <div class="stat-label">average rating</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-value" id="stat-buy">–</div>
+        <div class="stat-label">would buy</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-value" id="stat-artist">–</div>
+        <div class="stat-label">most logged artist</div>
+      </div>
+    </section>
+
+    <section class="charts">
+      <div class="chart-card viz-root">
+        <div class="chart-title">Rating distribution</div>
+        <div id="rating-chart" class="bar-chart" role="img" aria-label="Histogram of album ratings"></div>
+      </div>
+      <div class="chart-card viz-root">
+        <div class="chart-title">Buy verdicts</div>
+        <div id="buy-chart" class="bar-chart bar-chart--horizontal" role="img" aria-label="Breakdown of buy verdicts"></div>
+      </div>
+    </section>
+
+    <section class="table-section">
+      <div class="table-controls">
+        <input type="search" id="search" placeholder="Search album or artist…" aria-label="Search album or artist">
+        <div class="sort-controls">
+          <label for="sort">Sort by</label>
+          <select id="sort">
+            <option value="date-desc">Date (newest)</option>
+            <option value="date-asc">Date (oldest)</option>
+            <option value="rating-desc">Rating (highest)</option>
+            <option value="rating-asc">Rating (lowest)</option>
+            <option value="artist-asc">Artist (A–Z)</option>
+            <option value="album-asc">Album (A–Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="album-table">
+          <thead>
+            <tr>
+              <th>Album</th>
+              <th>Artist</th>
+              <th>Rating</th>
+              <th>Buy?</th>
+              <th>Date</th>
+              <th>Favorite track</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody id="album-tbody"></tbody>
+        </table>
+        <p id="empty-state" class="empty-state" hidden>No albums match your search.</p>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <p>Data lives in <a href="data/albums.csv">data/albums.csv</a> — edit it and push to update the log.</p>
+    </footer>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
